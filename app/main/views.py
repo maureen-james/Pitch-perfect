@@ -9,4 +9,8 @@ def index():
     '''
     return render_template('index.html')
 
+@main.route('/pitches/')
+def business():
+    # business=get_news('business')
     
+    return render_template('business.html',business=business)  

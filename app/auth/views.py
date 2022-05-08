@@ -3,8 +3,8 @@ from . import auth
 from flask_login import login_user, logout_user ,login_required
 from ..models import User
 from .. import db
-from ..email import mail_message
-from .forms import RegForm,LoginForm
+# from ..email import mail_message
+from .forms import RegistrationForm,LoginForm
 
 
 @auth.route('/login', methods = ['GET','POST'])
@@ -26,10 +26,10 @@ def logout():
 
 @auth.route('/signup', methods = ["GET","POST"])
 def signup():
-    form = RegForm(csrf_enable=False)
+    form = RegistrationForm(csrf_enable=False)
     if form.validate_on_submit():
         user = User(email = form.email.data, username = form.username.data, password = form.password.data)
         user.save_u()
-        mail_message("Welcome to the Pitch-World","email/welcome_user.txt",user.email,user=user)
+        # mail_message("Welcome to the Pitch-World","email/welcome_user.txt",user.email,user=user)
         return redirect(url_for('auth.login'))
     return render_template('auth/signup.html', r_form = form)

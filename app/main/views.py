@@ -9,7 +9,7 @@ def index():
     '''
     return render_template('index.html')
 
-@main.route('/pitches/')
+@main.route('/Pitches/')
 def business():
     # business=get_news('business')
     

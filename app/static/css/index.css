@@ -19,8 +19,11 @@
     box-shadow:15px 20px rgb(80, 70, 80);
 }
 .col-md-4{
-    height: 55vh;
+    height: 50vh;
 }
 .fa{
 padding-left: 12px;
+}
+.nav{
+    display: flex;
 }

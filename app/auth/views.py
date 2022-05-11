@@ -12,7 +12,7 @@ def login():
     form = LoginForm(csrf_enable=False)
     if form.validate_on_submit():
         user = User.query.filter_by(username = form.username.data).first()
-        if user != 0 and user.verify_password(form.password.data):
+        if user != None and user.verify_password(form.password.data):
             login_user(user,form.remember.data)
             return redirect(request.args.get('next') or url_for('main.index'))
         flash('LOGGING DETAILS NOT FOUND')    

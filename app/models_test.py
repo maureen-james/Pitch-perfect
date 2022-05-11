@@ -1,27 +1,17 @@
 import unittest
-from app import models
+from .models import User
 
-# class SourceTest(unittest.TestCase):
-#     '''
-#     Test Class to test the behaviour of the News class
-#     '''
+class UserModelTest(unittest.TestCase):
 
-#     def setUp(self):
-#         '''
-#         Set up method that will run before every Test
-#         '''
-#         self.new_Source = Source("abc-news","ABC News","Your trusted source for breaking news", "analysis, exclusive interviews, headlines, and videos at ABCNews.com.", "https://abcnews.go.com", "general", "en", "us")
+    def setUp(self):
+        self.new_user = User(password = 'banana')
 
-#     def test_instance(self):
-#         self.assertTrue(isinstance(self.new_Source,Source))
+    def test_password_setter(self):
+        self.assertTrue(self.new_user.pass_secure is not None)
 
-# class TestArticle(unittest.TestCase):
-#     def setUp(self):
-#         self.new_article=Article('by maureen','CNN','killer cat','www.cnn.com','from','skjsdjfkd.jpg','12/12/15','killer',)
+    def test_no_access_password(self):
+            with self.assertRaises(AttributeError):
+                self.new_user.password
 
-#     def test_instance(self):
-#         self.assertTrue(isinstance(self.new_article,Article))        
-
-
-if __name__ == '__main__':
-    unittest.main()
+    def test_password_verification(self):
+            self.assertTrue(self.new_user.verify_password('banana'))    

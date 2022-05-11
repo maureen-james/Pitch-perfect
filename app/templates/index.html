@@ -29,7 +29,9 @@
                     <h4 span style="font-weight: 900;">{{ pitch.title}}</h4>
                 </div>
                 <div class="panel-body">
-                    <p>{{ pitch.content }}</p>
+                    <p>Category:{{ pitch.category }}</p>
+                    <p>{{ pitch.post }}</p>
+            
                     <p class="panel-text"><strong>Created on: <span class="badge rounded-pill text-dark">{{
                       pitch.date_created  }}</span></strong> <br>
                       <a href="{{url_for('main.like',id = pitch.id)}}"> <i class="fa fa-thumbs-up"></i> upvotes: {{pitch.like.count()}}</a>

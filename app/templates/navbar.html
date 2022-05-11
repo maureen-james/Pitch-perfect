@@ -1,8 +1,16 @@
 <ul class="nav navbar-nav navbar-right">
      <a class="navbar-brand" href="/"> Pitch app </a>
+  
      {% if current_user.is_authenticated %}
+     <ul class="nav navbar-nav navbar-left">
+           
+      <li><a href="{{url_for('main.profile',name=current_user.username)}}">Profile</a>
+     &nbsp;</li>
+    <!-- <li style="color:white;padding:15px;">{{current_user.username}}</li> -->
+    <li><a href="/new_pitches" class="tag"> Create Your Pitch</a>&nbsp;</li>
      <li style="color:white;padding:15px;">{{current_user.username}}</li>
      <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+     <!-- <li><a href="{{url_for('main.new_pitch')}}"></a></li> -->
      {% else %}
      <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
      {%endif%}

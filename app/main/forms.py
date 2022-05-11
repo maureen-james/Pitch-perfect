@@ -47,9 +47,8 @@ class UpdateProfile(FlaskForm):
 
 class PitchForm(FlaskForm):
     title = StringField('Pitch Title', validators=[DataRequired(), Length(1, 64)])
-    author = StringField('Author : ', validators=[DataRequired()])
-    category = RadioField('Pitch Category', choices = [('businesspitch', 'Business Pitch'),  ('lyricspitch', ' Lyrics Pitch'), ('advertisementpitch', 'Advertisement Pitch'),('relationshippitch' , 'Relationship Pitch')], validators = [DataRequired()])
-    content = TextAreaField('Pitch Content', validators=[DataRequired()])
+    category = StringField('Pitch Category', validators=[DataRequired(), Length(1, 64)])
+    post = TextAreaField('Pitch Content', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 class CommentForm(FlaskForm):

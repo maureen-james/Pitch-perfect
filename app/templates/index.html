@@ -6,7 +6,8 @@
 <!--bootstrap link-->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 {{ super() }}
-<link rel="stylesheet" href="{{ url_for('static', filename='static/css/index.css') }}">
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='static/css/index.css') }}"> -->
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/index.css')}}">
 {% endblock %}
 <title>{{ title }}</title>
 {% endblock %}
@@ -22,20 +23,22 @@
         <div class="row">
           {% for pitch in pitches %}
           <div class="col-md-4 ">
+              <div class="pitch">
             <div class="panel panel-default text-center " id="display1">
                 <div class="panel-heading">
                     <h4 span style="font-weight: 900;">{{ pitch.title}}</h4>
                 </div>
                 <div class="panel-body">
                     <p>{{ pitch.content }}</p>
-                    <p class="panel-text"><strong>Created on: <span class="badge rounded-pill bg-warning text-dark">{{
+                    <p class="panel-text"><strong>Created on: <span class="badge rounded-pill text-dark">{{
                       pitch.date_created  }}</span></strong> <br>
-                      <a href="{{url_for('main.like',id = pitch.id)}}"> <i class="fa fa-thumbs-up"></i> likes: {{pitch.like.count()}}</a>
-                      <a href="{{url_for('main.dislike',id = pitch.id)}}"> <i class="fa fa-thumbs-down"></i> dislikes: {{pitch.dislikes.count()}}</a>
+                      <a href="{{url_for('main.like',id = pitch.id)}}"> <i class="fa fa-thumbs-up"></i> upvotes: {{pitch.like.count()}}</a>
+                      <a href="{{url_for('main.dislike',id = pitch.id)}}"> <i class="fa fa-thumbs-down"></i> downvotes: {{pitch.dislikes.count()}}</a>
                       <a href="{{ url_for('main.comment', pitch_id = pitch.id)}}"><i class="fa fa-comments" aria-hidden="true"></i>comment</a>
                     </p>
                       
                 </div>
+              </div>
             </div>
         </div> 
           {% endfor %}
@@ -44,7 +47,7 @@
               </div>
    <div class="container ">
     <div class="row ">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <ul class="list-group list-group-horizontal-xl icons bg-dark ">
                 <li class="icon-item"><a href="http://instagram.com" target="_blank" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                 <li class="icon-item"><a href="http://facebook.com" target="_blank" title="Facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
@@ -53,7 +56,7 @@
                 <li class="icon-item"><a href="http://linkedin.com" target="_blank" title="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
             </ul>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <footer class="page-footer font-small special-color-dark">
 
                 <!-- Copyright -->
